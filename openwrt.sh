@@ -20,8 +20,6 @@ cd lede
 
 ./scripts/feeds install -a
 
-echo "$(date +'%m.%d.%Y')" > package/base-files/files/etc/openwrt_version
-
 curl -fsSL  https://raw.githubusercontent.com/ywt114/Actions-OpenWrt/main/.config > .config
 
 curl -fsSL  https://raw.githubusercontent.com/ywt114/Actions-OpenWrt/main/diy-part2.sh > diy.sh
