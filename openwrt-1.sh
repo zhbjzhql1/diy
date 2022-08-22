@@ -20,21 +20,7 @@ cd lede
 
 ./scripts/feeds install -a
 
-curl -fsSL  https://raw.githubusercontent.com/ywt114/Actions-OpenWrt/main/.config > .config
-
-curl -fsSL  https://raw.githubusercontent.com/ywt114/Actions-OpenWrt/main/diy-part2.sh > diy.sh
-
-chmod +x diy.sh
-
-./diy.sh
-
-cd ~
-
-cd lede
-
-make defconfig
-
-./scripts/diffconfig.sh > .diffconfig
+make menuconfig || true
 
 make download -j1 V=s
 
