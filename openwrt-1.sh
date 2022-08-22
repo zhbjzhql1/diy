@@ -20,7 +20,7 @@ cd lede
 
 ./scripts/feeds install -a
 
-make menuconfig || true
+make defconfig
 
 make download -j1 V=s
 
