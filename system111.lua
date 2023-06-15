@@ -13,14 +13,15 @@ function index()
 
 	entry({"admin", "system", "admin"}, cbi("admin_system/admin"), _("Administration"), 2)
 
-	if fs.access("/bin/opkg") then
-		entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
-		entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
+	--if fs.access("/bin/opkg") then
+		--entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
+		--entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
 	end
 
 	entry({"admin", "system", "startup"}, form("admin_system/startup"), _("Startup"), 45)
 	--entry({"admin", "system", "crontab"}, form("admin_system/crontab"), _("Scheduled Tasks"), 46)
 	entry({"admin", "system", "crontab"},arcombine(cbi("admin_system/crontab"), cbi("admin_system/crontab-details")),_("Scheduled Tasks"), 46).leaf = true
+	
 	if fs.access("/sbin/block") and fs.access("/etc/config/fstab") then
 		entry({"admin", "system", "fstab"}, cbi("admin_system/fstab"), _("Mount Points"), 50)
 		entry({"admin", "system", "fstab", "mount"}, cbi("admin_system/fstab/mount"), nil).leaf = true
