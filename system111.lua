@@ -19,8 +19,8 @@ function index()
 	end
 
 	entry({"admin", "system", "startup"}, form("admin_system/startup"), _("Startup"), 45)
-	entry({"admin", "system", "crontab"}, form("admin_system/crontab"), _("Scheduled Tasks"), 46)
-
+	--entry({"admin", "system", "crontab"}, form("admin_system/crontab"), _("Scheduled Tasks"), 46)
+	entry({"admin", "system", "crontab"},arcombine(cbi("admin_system/crontab"), cbi("admin_system/crontab-details")),_("Scheduled Tasks"), 46).leaf = true
 	if fs.access("/sbin/block") and fs.access("/etc/config/fstab") then
 		entry({"admin", "system", "fstab"}, cbi("admin_system/fstab"), _("Mount Points"), 50)
 		entry({"admin", "system", "fstab", "mount"}, cbi("admin_system/fstab/mount"), nil).leaf = true
@@ -44,6 +44,9 @@ function index()
 
 	entry({"admin", "system", "reboot"}, template("admin_system/reboot"), _("Reboot"), 90)
 	entry({"admin", "system", "reboot", "call"}, post("action_reboot"))
+
+	entry({"admin", "system", "poweroff"}, template("admin_system/poweroff"), _("关机"), 92)
+	entry({"admin", "system", "poweroff", "call"}, post("action_poweroff"))
 end
 
 function action_clock_status()
@@ -397,6 +400,10 @@ function action_passwd()
 	end
 
 	luci.template.render("admin_system/passwd", {stat=stat})
+end
+
+function action_poweroff()
+	luci.sys.exec("/sbin/poweroff" )
 end
 
 function action_reboot()
