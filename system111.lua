@@ -16,7 +16,7 @@ function index()
 	--if fs.access("/bin/opkg") then
 		--entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
 		--entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
-	end
+	--end
 
 	entry({"admin", "system", "startup"}, form("admin_system/startup"), _("Startup"), 45)
 	--entry({"admin", "system", "crontab"}, form("admin_system/crontab"), _("Scheduled Tasks"), 46)
