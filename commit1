@@ -1,1 +1,1 @@
-cd openwrt && git reset --hard 3441bc5588a1a208f79a7bbc6fbeb90e987433a4^
+openwrt
